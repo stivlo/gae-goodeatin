@@ -22,11 +22,15 @@ public class GoodEatinServlet extends HttpServlet {
                 List<Restaurant> restList = null;
                 EntityManager em = EMF.get().createEntityManager();
                 try {
-                        Query query = em.createQuery("SELECT r FROM Restaurant r ORDER BY dateAdded DESC");
+                        String gql;
+                        //gql = "SELECT r FROM Restaurant r " +
+                        //                "WHERE name=\"Brett's House\" ORDER BY dateAdded DESC";
+                        gql = "SELECT r FROM Restaurant r ORDER BY dateAdded DESC";
+                        Query query = em.createQuery(gql);
                         //instead of using setFirstResult(), for paging, figure the key of the last
                         //one and use WHERE, to find keys greater than it.
                         //query.setFirstResult(0);
-                        query.setMaxResults(3);
+                        //query.setMaxResults(3); //limit the max results
                         restList = query.getResultList();
                         req.setAttribute("restaurants", restList);
                         logger.fine("Restaurants: " + req.getAttribute("restaurants"));

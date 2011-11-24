@@ -1,6 +1,7 @@
 package org.obliquid.goodeatin;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
@@ -30,6 +31,9 @@ public class RestaurantCreator extends HttpServlet {
                         r.setDescription("Great food, pretty good company... sometimes.");
                         r.setAddress("123 South St.");
                         r.setDateAdded(new Date());
+                        Comment comment2 = new Comment();
+                        comment2.setCommentText("Here is our second comment");
+                        r.setComments(Arrays.asList(comment2));
                         em.persist(r);
                         tx.commit();
 
@@ -40,6 +44,12 @@ public class RestaurantCreator extends HttpServlet {
                         r.setDescription("This place rocks!");
                         r.setAddress("12 Diamond St.");
                         r.setDateAdded(new Date());
+                        Comment comment3 = new Comment();
+                        comment3.setCommentText("Here is our third comment");
+                        r.setComments(Arrays.asList(comment3));
+                        Comment comment4 = new Comment();
+                        comment4.setCommentText("Here is our fourth comment");
+                        r.setComments(Arrays.asList(comment3, comment4));
                         em.persist(r);
                         tx.commit();
 
@@ -50,6 +60,9 @@ public class RestaurantCreator extends HttpServlet {
                         r.setDescription("This place has the biggest potatoes I've ever seen. Seriously.");
                         r.setAddress("8 Tropical St.");
                         r.setDateAdded(new Date());
+                        Comment comment5 = new Comment();
+                        comment5.setCommentText("Here is our fifth comment");
+                        r.setComments(Arrays.asList(comment5));
                         em.persist(r);
                         tx.commit();
                 } finally {
@@ -63,12 +76,15 @@ public class RestaurantCreator extends HttpServlet {
                         throws ServletException, IOException {
                 EntityManager em = EMF.get().createEntityManager();
                 try {
-                        Restaurant r = new Restaurant();
-                        r.setName(req.getParameter("name"));
-                        r.setDescription(req.getParameter("description"));
-                        r.setAddress(req.getParameter("address"));
-                        r.setDateAdded(new Date());
-                        em.persist(r);
+                        Restaurant restaurant = new Restaurant();
+                        restaurant.setName(req.getParameter("name"));
+                        restaurant.setDescription(req.getParameter("description"));
+                        restaurant.setAddress(req.getParameter("address"));
+                        restaurant.setDateAdded(new Date());
+                        Comment comment1 = new Comment();
+                        comment1.setCommentText("Here is our first comment");
+                        restaurant.setComments(Arrays.asList(comment1));
+                        em.persist(restaurant);
                         resp.sendRedirect("goodEatin");
                 } finally {
                         em.close();

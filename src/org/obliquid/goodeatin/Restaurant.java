@@ -1,11 +1,15 @@
 package org.obliquid.goodeatin;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -21,6 +25,8 @@ public class Restaurant {
         private Date dateAdded;
 
         private String address;
+
+        private List<Comment> comments;
 
         /**
          * @return the id
@@ -102,6 +108,25 @@ public class Restaurant {
         @Override
         public String toString() {
                 return getName();
+        }
+
+        /**
+         * mappedBy tells the property in Comment used to track this
+         * relationship.
+         * 
+         * @return the comments
+         */
+        @OneToMany(cascade = CascadeType.ALL, mappedBy = "restaurant", fetch = FetchType.LAZY)
+        public List<Comment> getComments() {
+                return comments;
+        }
+
+        /**
+         * @param comments
+         *                the comments to set
+         */
+        public void setComments(List<Comment> comments) {
+                this.comments = comments;
         }
 
 }
