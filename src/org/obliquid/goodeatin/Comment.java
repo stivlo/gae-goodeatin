@@ -1,5 +1,7 @@
 package org.obliquid.goodeatin;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,12 @@ import javax.persistence.ManyToOne;
 import com.google.appengine.api.datastore.Key;
 
 @Entity
-public class Comment {
+public class Comment implements Serializable {
+
+        /**
+         * Universal Serial Identifier.
+         */
+        private static final long serialVersionUID = 1L;
 
         private Key id;
         private String commentText;

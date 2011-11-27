@@ -1,5 +1,6 @@
 package org.obliquid.goodeatin;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,12 @@ import javax.persistence.OneToMany;
 import com.google.appengine.api.datastore.Key;
 
 @Entity
-public class Restaurant {
+public class Restaurant implements Serializable {
+
+        /**
+         * Universal serial identifier.
+         */
+        private static final long serialVersionUID = 1L;
 
         private Key id;
 
