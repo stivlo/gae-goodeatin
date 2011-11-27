@@ -1,5 +1,6 @@
 .classpath
 .project
 .settings/
-war/
-
+war/WEB-INF/appengine-generated/
+war/WEB-INF/classes/
+war/WEB-INF/lib/
