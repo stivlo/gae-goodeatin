@@ -18,6 +18,9 @@
 							${restaurant.address} - Added on
 							<fmt:formatDate value="${restaurant.dateAdded}"
 								pattern="dd MMM yyyy" />
+								<c:if test="${restaurant.submitter != null}">
+								    by ${restaurant.submitter.nickname}
+								</c:if>
 						</p>
 						<div class="entry">
 							<p>

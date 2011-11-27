@@ -17,7 +17,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 	    <servlet-name>RestaurantCreator</servlet-name>
-	    <servlet-class>org.obliquid.goodeatin.RestaurantCreator</servlet-class>
+	    <servlet-class>org.obliquid.goodeatin.RestaurantMaker</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	    <servlet-name>RestaurantCreator</servlet-name>

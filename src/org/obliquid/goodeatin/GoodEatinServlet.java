@@ -21,7 +21,7 @@ public class GoodEatinServlet extends HttpServlet {
         private static Logger logger = Logger.getLogger(GoodEatinServlet.class.getName());
 
         /** Top restaurants Memcached key. */
-        private static final String TOP_RESTAURANTS = "topRestaurants";
+        public static final String TOP_RESTAURANTS = "topRestaurants";
 
         @Override
         @SuppressWarnings("unchecked")

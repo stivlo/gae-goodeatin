@@ -11,11 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.memcache.MemcacheService;
+import com.google.appengine.api.memcache.MemcacheServiceFactory;
+import com.google.appengine.api.users.UserServiceFactory;
+
 /**
  * Save the list of Restaurants into the data store. Every top level entity has
  * to be saved in its own transaction.
  */
-public class RestaurantCreator extends HttpServlet {
+public class RestaurantMaker extends HttpServlet {
 
         private static final long serialVersionUID = 1L;
 
@@ -81,10 +85,10 @@ public class RestaurantCreator extends HttpServlet {
                         restaurant.setDescription(req.getParameter("description"));
                         restaurant.setAddress(req.getParameter("address"));
                         restaurant.setDateAdded(new Date());
-                        Comment comment1 = new Comment();
-                        comment1.setCommentText("Here is our first comment");
-                        restaurant.setComments(Arrays.asList(comment1));
+                        restaurant.setSubmitter(UserServiceFactory.getUserService().getCurrentUser());
                         em.persist(restaurant);
+                        MemcacheService memcache = MemcacheServiceFactory.getMemcacheService();
+                        memcache.delete(GoodEatinServlet.TOP_RESTAURANTS);
                         resp.sendRedirect("goodEatin");
                 } finally {
                         em.close();

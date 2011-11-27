@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.users.User;
 
 @Entity
 public class Restaurant implements Serializable {
@@ -33,6 +34,8 @@ public class Restaurant implements Serializable {
         private String address;
 
         private List<Comment> comments;
+
+        private User submitter;
 
         /**
          * @return the id
@@ -133,6 +136,21 @@ public class Restaurant implements Serializable {
          */
         public void setComments(List<Comment> comments) {
                 this.comments = comments;
+        }
+
+        /**
+         * @return the submitter
+         */
+        public User getSubmitter() {
+                return submitter;
+        }
+
+        /**
+         * @param submitter
+         *                the submitter to set
+         */
+        public void setSubmitter(User submitter) {
+                this.submitter = submitter;
         }
 
 }
