@@ -5,7 +5,7 @@
        1, 2, ...  are the development version
        live       is the live version  
   -->
-  <version>7</version>
+  <version>live</version>
   <threadsafe>true</threadsafe>
  
   <!-- Configure java.util.logging -->
@@ -19,5 +19,9 @@
       <exclude path="/css/**"/>
       <exclude path="/img/**"/>
   </resource-files>
+  
+  <inbound-services>
+      <service>mail</service>
+  </inbound-services>
  
 </appengine-web-app>

@@ -53,9 +53,11 @@ public class CommentMaker extends HttpServlet {
                 }
                 Session session = Session.getDefaultInstance(new Properties(), null);
                 StringBuilder body = new StringBuilder("Hello ");
-                body.append(r.getSubmitter().getNickname()).append(",\r\nA new comment was added by ")
-                                .append(commentSubmitter.getNickname()).append(" to \"").append(r.getName())
-                                .append("\":\r\n\r\n").append(c.getCommentText());
+                body.append(r.getSubmitter().getNickname()).append(",\r\nA new comment was added ");
+                if (commentSubmitter != null) {
+                        body.append("by ").append(commentSubmitter.getNickname());
+                }
+                body.append(" to \"").append(r.getName()).append("\":\r\n\r\n").append(c.getCommentText());
                 try {
                         Message msg = new MimeMessage(session);
                         //can only set some of the headers

@@ -61,6 +61,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <url-pattern>/remoteapi</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>MailHandlerServlet</servlet-name>
+        <servlet-class>org.obliquid.goodeatin.MailHandlerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MailHandlerServlet</servlet-name>
+        <url-pattern>/_ah/mail/*</url-pattern>
+    </servlet-mapping>
+    
     <!-- AppStats start -->
     <filter>
         <filter-name>appstats</filter-name>
@@ -105,6 +114,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         </web-resource-collection>
         <auth-constraint>
             <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/_ah/mail/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
 	
