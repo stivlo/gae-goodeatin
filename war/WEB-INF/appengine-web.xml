@@ -22,6 +22,7 @@
   
   <inbound-services>
       <service>mail</service>
+      <service>xmpp_message</service>
   </inbound-services>
  
 </appengine-web-app>

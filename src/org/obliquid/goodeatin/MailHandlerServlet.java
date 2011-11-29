@@ -37,14 +37,14 @@ public class MailHandlerServlet extends HttpServlet {
                                         + "&comment="
                                         + URLEncoder.encode(content, "UTF-8");
                         LOG.fine("URL: " + url);
-                        RequestDispatcher reqDisp = req.getRequestDispatcher(url);
-                        reqDisp.forward(req, resp);
+                        //RequestDispatcher reqDisp = req.getRequestDispatcher(url);
+                        //reqDisp.forward(req, resp);
                 } catch (MessagingException ex) {
                         ex.printStackTrace();
                 } catch (IOException ex) {
                         ex.printStackTrace();
-                } catch (ServletException ex) {
-                        ex.printStackTrace();
+                        //} catch (ServletException ex) {
+                        //        ex.printStackTrace();
                 }
         }
 

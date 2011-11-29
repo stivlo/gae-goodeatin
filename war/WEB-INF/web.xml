@@ -32,6 +32,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-name>NewRestaurant</servlet-name>
         <url-pattern>/newRestaurant</url-pattern>
     </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/newRestaurant</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
     
     <servlet>
         <servlet-name>NewComment</servlet-name>
@@ -41,7 +49,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-name>NewComment</servlet-name>
         <url-pattern>/newComment</url-pattern>
     </servlet-mapping>
-
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/newComment</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
     
     <servlet>
         <servlet-name>CommentMaker</servlet-name>
@@ -69,6 +84,31 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-name>MailHandlerServlet</servlet-name>
         <url-pattern>/_ah/mail/*</url-pattern>
     </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/_ah/mail/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <servlet>
+        <servlet-name>XmppServlet</servlet-name>
+        <servlet-class>org.obliquid.goodeatin.XmppServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>XmppServlet</servlet-name>
+        <url-pattern>/_ah/xmpp/message/chat/*</url-pattern>
+    </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/_ah/xmpp/message/chat/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
     
     <!-- AppStats start -->
     <filter>
@@ -88,42 +128,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-name>appstats</servlet-name>
         <url-pattern>/appstats/*</url-pattern>
     </servlet-mapping>
-    <!-- AppStats end -->
-    
-	<security-constraint>
-	    <web-resource-collection>
-	        <url-pattern>/appstats/*</url-pattern>
-	    </web-resource-collection>
-	    <auth-constraint>
-	        <role-name>admin</role-name>
-	    </auth-constraint>
-	</security-constraint>
-	
-    <security-constraint>
-        <web-resource-collection>
-            <url-pattern>/newRestaurant</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>*</role-name>
-        </auth-constraint>
-    </security-constraint>
     
     <security-constraint>
         <web-resource-collection>
-            <url-pattern>/newComment</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>*</role-name>
-        </auth-constraint>
-    </security-constraint>
-    
-    <security-constraint>
-        <web-resource-collection>
-            <url-pattern>/_ah/mail/*</url-pattern>
+            <url-pattern>/appstats/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
+    <!-- AppStats end -->   	    
+   
 	
 </web-app>
