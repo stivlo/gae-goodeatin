@@ -110,6 +110,23 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         </auth-constraint>
     </security-constraint>
     
+    <servlet>
+        <servlet-name>DefaultTaskQueueServlet</servlet-name>
+        <servlet-class>org.obliquid.goodeatin.DefaultTaskQueueServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DefaultTaskQueueServlet</servlet-name>
+        <url-pattern>/_ah/queue/default</url-pattern>
+    </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/_ah/queue/default</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
     <!-- AppStats start -->
     <filter>
         <filter-name>appstats</filter-name>

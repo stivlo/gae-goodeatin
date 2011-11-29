@@ -1,6 +1,7 @@
 GoodEating Google App Engine application, from Dan Pilone's video tutorials - O'Reilly breakdown.
 
-The videos are not free, they can be purchased separately, but if you plan to watch them all, is cheaper to use a Safari Book Online Subscription. I'm currently working through the videos.
+The videos are not free, they can be purchased separately, but if you plan to watch them all, 
+is cheaper to use a Safari Book Online Subscription. This is not the official source code.
 
 * [Developing Applications on a Cloud Platform](http://shop.oreilly.com/product/0636920010739.do)
 

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.xmpp.Message;
 import com.google.appengine.api.xmpp.MessageBuilder;
 import com.google.appengine.api.xmpp.SendResponse;
@@ -27,6 +29,10 @@ public class XmppServlet extends HttpServlet {
                 Message message = xmpp.parseMessage(req);
                 LOG.fine("Received IM from: " + message.getFromJid().getId() + " that says "
                                 + message.getBody());
+
+                Queue queue = QueueFactory.getDefaultQueue();
+                queue.add();
+
                 MemcacheService memcache = MemcacheServiceFactory.getMemcacheService();
                 @SuppressWarnings("unchecked")
                 List<Restaurant> restList = (List<Restaurant>) memcache
