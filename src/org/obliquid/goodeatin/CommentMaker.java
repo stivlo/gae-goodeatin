@@ -44,7 +44,7 @@ public class CommentMaker extends HttpServlet {
                                 tx.rollback();
                         }
                 }
-                resp.sendRedirect("/goodEatin");
+                //resp.sendRedirect("/goodEatin"); //we are now calling from Task Queue
         }
 
         private void emailRestaurantSubmitter(Restaurant r, Comment c, User commentSubmitter) {

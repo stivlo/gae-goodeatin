@@ -66,6 +66,23 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-name>CommentMaker</servlet-name>
         <url-pattern>/commentMaker</url-pattern>
     </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/commentMaker</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>    
+    
+    <servlet>
+        <servlet-name>AsynchronousCommentMaker</servlet-name>
+        <servlet-class>org.obliquid.goodeatin.AsynchronousCommentMakerServlet</servlet-class>
+    </servlet>    
+    <servlet-mapping>
+        <servlet-name>AsynchronousCommentMaker</servlet-name>
+        <url-pattern>/asynchronousCommentMaker</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>RemoteApi</servlet-name>

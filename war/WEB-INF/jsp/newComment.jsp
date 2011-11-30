@@ -14,7 +14,7 @@
                     <h2 class="title">Add a new Comment</h2>
                     <p class="meta"></p>
                     <div class="entry">
-                        <form action="/commentMaker" method="post">
+                        <form action="/asynchronousCommentMaker" method="post">
                             <label for="comment">Comment:</label><br />
                             <textarea rows="5" style="width: 200px;" name="comment"
                                 id="description"></textarea>
